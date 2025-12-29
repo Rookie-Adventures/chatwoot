@@ -65,15 +65,32 @@ docker-compose -f docker-compose.fast.yaml exec rails bundle exec rails db:chatw
 
 ### 服务器部署（Ubuntu 24.04）
 
+#### 方法 1: 一键部署（推荐）⭐⭐⭐
+
 ```bash
-# 1. 运行一键部署脚本
+# 1. 克隆代码到服务器
+cd /opt
+git clone https://github.com/Rookie-Adventures/chatwoot.git
+cd chatwoot
+
+# 2. 运行一键部署脚本（包含所有配置）
+sudo bash deploy-complete.sh
+
+# 完成！访问 https://chat.trikn.shop
+```
+
+#### 方法 2: 手动部署
+
+```bash
+# 1. 运行基础环境安装脚本
 sudo bash deploy-server.sh
 
-# 2. 上传项目文件
-# 参考 FILES-TO-UPLOAD.md
+# 2. 克隆代码
+cd /opt
+git clone https://github.com/Rookie-Adventures/chatwoot.git
+cd chatwoot
 
 # 3. 启动服务
-cd /opt/chatwoot
 docker compose -f docker-compose.fast.yaml up -d
 
 # 4. 初始化数据库
