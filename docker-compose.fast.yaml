@@ -11,6 +11,7 @@ services:
       # 挂载修改的文件（覆盖镜像内的文件）
       - ./lib/chatwoot_hub.rb:/app/lib/chatwoot_hub.rb
       - ./enterprise/app/services/internal/reconcile_plan_config_service.rb:/app/enterprise/app/services/internal/reconcile_plan_config_service.rb
+      - ./app/models/installation_config.rb:/app/app/models/installation_config.rb
       - ./config/installation_config.yml:/app/config/installation_config.yml
       - ./enterprise/config/premium_installation_config.yml:/app/enterprise/config/premium_installation_config.yml
       # 挂载品牌资源目录（Logo、图标等）
