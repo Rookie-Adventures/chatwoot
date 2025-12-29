@@ -49,7 +49,8 @@ class InstallationConfig < ApplicationRecord
   private
 
   def set_lock
-    self.locked = true if locked.nil?
+    # 默认不锁定配置，允许在超级管理员后台修改
+    self.locked = false if locked.nil?
   end
 
   def clear_cache
