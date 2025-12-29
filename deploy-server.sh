@@ -43,17 +43,27 @@ else
 fi
 
 # 2. 安装 Docker & Nginx
-echo -e "${GREEN}[2/8] 安装基础依赖 (Docker/Nginx/Certbot)...${NC}"
+echo -e "${GREEN}[2/8] 检查并安装基础依赖...${NC}"
 apt update
-# 尝试安装
-if ! apt install -y docker.io docker-compose-plugin nginx certbot python3-certbot-nginx; then
-    echo -e "${YELLOW}官方源安装失败，尝试使用 Docker 官方脚本...${NC}"
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sh get-docker.sh
-    apt install -y nginx certbot python3-certbot-nginx
+
+# 检查 Docker 是否已安装
+if command -v docker &> /dev/null; then
+    echo -e "${YELLOW}检测到 Docker 已安装 ($ (docker --version))，跳过 Docker 安装${NC}"
+else
+    echo -e "${YELLOW}正在安装 Docker...${NC}"
+    if ! apt install -y docker.io docker-compose-plugin; then
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sh get-docker.sh
+    fi
 fi
-systemctl start docker
-systemctl enable docker
+
+# 确保安装 Nginx 和 Certbot (排除 docker 相关的包以防冲突)
+apt install -y nginx certbot python3-certbot-nginx
+
+systemctl start docker || true
+systemctl enable docker || true
+systemctl start nginx
+systemctl enable nginx
 
 # 3. 准备代码目录
 echo -e "${GREEN}[3/8] 准备代码环境...${NC}"
