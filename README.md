@@ -1,140 +1,249 @@
-<img src="./.github/screenshots/header.png#gh-light-mode-only" width="100%" alt="Header light mode"/>
-<img src="./.github/screenshots/header-dark.png#gh-dark-mode-only" width="100%" alt="Header dark mode"/>
+# Chatwoot 完全开源化部署项目
 
-___
+## 🎯 项目概述
 
-# Chatwoot
+这是一个完全开源化的 Chatwoot 部署方案，解锁所有企业功能，无需付费订阅。
 
-The modern customer support platform, an open-source alternative to Intercom, Zendesk, Salesforce Service Cloud etc.
+### ✅ 已实现的功能
 
-<p>
-  <a href="https://codeclimate.com/github/chatwoot/chatwoot/maintainability"><img src="https://api.codeclimate.com/v1/badges/e6e3f66332c91e5a4c0c/maintainability" alt="Maintainability"></a>
-  <img src="https://img.shields.io/circleci/build/github/chatwoot/chatwoot" alt="CircleCI Badge">
-    <a href="https://hub.docker.com/r/chatwoot/chatwoot/"><img src="https://img.shields.io/docker/pulls/chatwoot/chatwoot" alt="Docker Pull Badge"></a>
-  <a href="https://hub.docker.com/r/chatwoot/chatwoot/"><img src="https://img.shields.io/docker/cloud/build/chatwoot/chatwoot" alt="Docker Build Badge"></a>
-  <img src="https://img.shields.io/github/commit-activity/m/chatwoot/chatwoot" alt="Commits-per-month">
-  <a title="Crowdin" target="_self" href="https://chatwoot.crowdin.com/chatwoot"><img src="https://badges.crowdin.net/e/37ced7eba411064bd792feb3b7a28b16/localized.svg"></a>
-  <a href="https://discord.gg/cJXdrwS"><img src="https://img.shields.io/discord/647412545203994635" alt="Discord"></a>
-  <a href="https://status.chatwoot.com"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchatwoot%2Fstatus%2Fmaster%2Fapi%2Fchatwoot%2Fuptime.json" alt="uptime"></a>
-  <a href="https://status.chatwoot.com"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fchatwoot%2Fstatus%2Fmaster%2Fapi%2Fchatwoot%2Fresponse-time.json" alt="response time"></a>
-  <a href="https://artifacthub.io/packages/helm/chatwoot/chatwoot"><img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/artifact-hub" alt="Artifact HUB"></a>
-</p>
-
-
-<p>
-  <a href="https://heroku.com/deploy?template=https://github.com/chatwoot/chatwoot/tree/master" alt="Deploy to Heroku">
-     <img width="150" alt="Deploy" src="https://www.herokucdn.com/deploy/button.svg"/>
-  </a>
-  <a href="https://marketplace.digitalocean.com/apps/chatwoot?refcode=f2238426a2a8" alt="Deploy to DigitalOcean">
-     <img width="200" alt="Deploy to DO" src="https://www.deploytodo.com/do-btn-blue.svg"/>
-  </a>
-</p>
-
-<img src="./.github/screenshots/dashboard.png#gh-light-mode-only" width="100%" alt="Chat dashboard dark mode"/>
-<img src="./.github/screenshots/dashboard-dark.png#gh-dark-mode-only" width="100%" alt="Chat dashboard"/>
+- ✅ **解锁所有企业功能** - AI、审计日志、SAML SSO 等
+- ✅ **完全品牌定制** - Logo、名称、链接等
+- ✅ **无限制使用** - 无用户数、账户数限制
+- ✅ **快速部署** - 2分钟本地启动，30分钟服务器部署
+- ✅ **配置持久化** - 品牌配置不会被重置
 
 ---
 
-Chatwoot is the modern, open-source, and self-hosted customer support platform designed to help businesses deliver exceptional customer support experience. Built for scale and flexibility, Chatwoot gives you full control over your customer data while providing powerful tools to manage conversations across channels.
+## 📚 文档索引
 
-### ✨ Captain – AI Agent for Support
+### 核心文档
 
-Supercharge your support with Captain, Chatwoot’s AI agent. Captain helps automate responses, handle common queries, and reduce agent workload—ensuring customers get instant, accurate answers. With Captain, your team can focus on complex conversations while routine questions are resolved automatically. Read more about Captain [here](https://chwt.app/captain-docs).
+1. **[UNLOCK-ENTERPRISE.md](UNLOCK-ENTERPRISE.md)** ⭐⭐⭐
+   - 企业功能解锁说明
+   - 修改的文件列表
+   - 验证方法
 
-### 💬 Omnichannel Support Desk
+2. **[DEPLOY-TO-SERVER.md](DEPLOY-TO-SERVER.md)** ⭐⭐⭐
+   - Ubuntu 24.04 服务器完整部署指南
+   - 包含所有步骤、配置、故障排查
+   - 适用于 2C2G 服务器
 
-Chatwoot centralizes all customer conversations into one powerful inbox, no matter where your customers reach out from. It supports live chat on your website, email, Facebook, Instagram, Twitter, WhatsApp, Telegram, Line, SMS etc.
+3. **[FILES-TO-UPLOAD.md](FILES-TO-UPLOAD.md)** ⭐⭐
+   - 需要上传到服务器的文件清单
+   - 上传方法说明
 
-### 📚 Help center portal
+### 辅助文档
 
-Publish help articles, FAQs, and guides through the built-in Help Center Portal. Enable customers to find answers on their own, reduce repetitive queries, and keep your support team focused on more complex issues.
+4. **[BRANDING-GUIDE.md](BRANDING-GUIDE.md)**
+   - 品牌定制详细指南
+   - 图标、Logo 设置方法
 
-### 🗂️ Other features
+5. **[BUILD-CUSTOM-IMAGE.md](BUILD-CUSTOM-IMAGE.md)**
+   - 自定义镜像构建指南（可选）
+   - 适用于需要构建镜像的场景
 
-#### Collaboration & Productivity
+6. **[QUICK-START.md](QUICK-START.md)**
+   - 快速启动指南
+   - 常用命令参考
 
-- Private Notes and @mentions for internal team discussions.
-- Labels to organize and categorize conversations.
-- Keyboard Shortcuts and a Command Bar for quick navigation.
-- Canned Responses to reply faster to frequently asked questions.
-- Auto-Assignment to route conversations based on agent availability.
-- Multi-lingual Support to serve customers in multiple languages.
-- Custom Views and Filters for better inbox organization.
-- Business Hours and Auto-Responders to manage response expectations.
-- Teams and Automation tools for scaling support workflows.
-- Agent Capacity Management to balance workload across the team.
+---
 
-#### Customer Data & Segmentation
-- Contact Management with profiles and interaction history.
-- Contact Segments and Notes for targeted communication.
-- Campaigns to proactively engage customers.
-- Custom Attributes for storing additional customer data.
-- Pre-Chat Forms to collect user information before starting conversations.
+## 🚀 快速开始
 
-#### Integrations
-- Slack Integration to manage conversations directly from Slack.
-- Dialogflow Integration for chatbot automation.
-- Dashboard Apps to embed internal tools within Chatwoot.
-- Shopify Integration to view and manage customer orders right within Chatwoot.
-- Use Google Translate to translate messages from your customers in realtime.
-- Create and manage Linear tickets within Chatwoot.
+### 本地测试（Windows）
 
-#### Reports & Insights
-- Live View of ongoing conversations for real-time monitoring.
-- Conversation, Agent, Inbox, Label, and Team Reports for operational visibility.
-- CSAT Reports to measure customer satisfaction.
-- Downloadable Reports for offline analysis and reporting.
+```bash
+# 1. 启动服务
+docker-compose -f docker-compose.fast.yaml up -d
 
+# 2. 初始化数据库
+docker-compose -f docker-compose.fast.yaml exec rails bundle exec rails db:chatwoot_prepare
 
-## Documentation
+# 3. 访问应用
+# http://localhost:3000
+```
 
-Detailed documentation is available at [chatwoot.com/help-center](https://www.chatwoot.com/help-center).
+### 服务器部署（Ubuntu 24.04）
 
-## Translation process
+```bash
+# 1. 运行一键部署脚本
+sudo bash deploy-server.sh
 
-The translation process for Chatwoot web and mobile app is managed at [https://translate.chatwoot.com](https://translate.chatwoot.com) using Crowdin. Please read the [translation guide](https://www.chatwoot.com/docs/contributing/translating-chatwoot-to-your-language) for contributing to Chatwoot.
+# 2. 上传项目文件
+# 参考 FILES-TO-UPLOAD.md
 
-## Branching model
+# 3. 启动服务
+cd /opt/chatwoot
+docker compose -f docker-compose.fast.yaml up -d
 
-We use the [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. The base branch is `develop`.
-If you are looking for a stable version, please use the `master` or tags labelled as `v1.x.x`.
+# 4. 初始化数据库
+docker compose -f docker-compose.fast.yaml exec rails bundle exec rails db:chatwoot_prepare
 
-## Deployment
+# 5. 配置 Nginx 和 SSL
+# 参考 DEPLOY-TO-SERVER.md
+```
 
-### Heroku one-click deploy
+---
 
-Deploying Chatwoot to Heroku is a breeze. It's as simple as clicking this button:
+## 📁 项目结构
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/chatwoot/chatwoot/tree/master)
+```
+e:\chatwoot/
+├── docker-compose.fast.yaml           # 快速部署配置 ⭐
+├── .env                               # 环境变量配置 ⭐
+├── lib/
+│   └── chatwoot_hub.rb               # 企业功能解锁 ⭐
+├── enterprise/
+│   ├── app/services/internal/
+│   │   └── reconcile_plan_config_service.rb  # 禁用配置重置 ⭐
+│   └── config/
+│       └── premium_installation_config.yml
+├── config/
+│   └── installation_config.yml
+├── public/
+│   └── brand-assets/                 # 自定义 Logo 和图标
+├── deploy-server.sh                  # 服务器一键部署脚本
+├── UNLOCK-ENTERPRISE.md              # 企业功能解锁文档
+├── DEPLOY-TO-SERVER.md               # 服务器部署指南
+├── FILES-TO-UPLOAD.md                # 文件上传清单
+└── README.md                         # 本文件
+```
 
-Follow this [link](https://www.chatwoot.com/docs/environment-variables) to understand setting the correct environment variables for the app to work with all the features. There might be breakages if you do not set the relevant environment variables.
+---
 
+## 🔧 核心修改说明
 
-### DigitalOcean 1-Click Kubernetes deployment
+### 1. 解锁企业功能
 
-Chatwoot now supports 1-Click deployment to DigitalOcean as a kubernetes app.
+**文件：** `lib/chatwoot_hub.rb`
 
-<a href="https://marketplace.digitalocean.com/apps/chatwoot?refcode=f2238426a2a8" alt="Deploy to DigitalOcean">
-  <img width="200" alt="Deploy to DO" src="https://www.deploytodo.com/do-btn-blue.svg"/>
-</a>
+```ruby
+def self.pricing_plan
+  'enterprise'  # 强制返回企业版
+end
 
-### Other deployment options
+def self.pricing_plan_quantity
+  999999  # 无限制许可证
+end
+```
 
-For other supported options, checkout our [deployment page](https://chatwoot.com/deploy).
+### 2. 禁用配置重置
 
-## Security
+**文件：** `enterprise/app/services/internal/reconcile_plan_config_service.rb`
 
-Looking to report a vulnerability? Please refer our [SECURITY.md](./SECURITY.md) file.
+```ruby
+def perform
+  return  # 禁用重置逻辑
+end
+```
 
-## Community
+### 3. 品牌定制
 
-If you need help or just want to hang out, come, say hi on our [Discord](https://discord.gg/cJXdrwS) server.
+通过超级管理员后台配置：
+```
+https://your-domain.com/super_admin/app_config?config=custom_branding
+```
 
-## Contributors
+---
 
-Thanks goes to all these [wonderful people](https://www.chatwoot.com/docs/contributors):
+## 🎯 解锁的功能列表
 
-<a href="https://github.com/chatwoot/chatwoot/graphs/contributors"><img src="https://opencollective.com/chatwoot/contributors.svg?width=890&button=false" /></a>
+### 核心功能
+- ✅ 品牌完全定制
+- ✅ 无限用户/座席
+- ✅ 无限账户/工作区
 
+### 高级功能
+- ✅ Captain AI - AI 智能助手
+- ✅ 审计日志 - 完整操作记录
+- ✅ SAML SSO - 企业单点登录
+- ✅ SLA 管理 - 服务级别协议
+- ✅ 高级报表 - 企业级数据分析
+- ✅ 高级集成 - Salesforce、Hubspot 等
 
-*Chatwoot* &copy; 2017-2025, Chatwoot Inc - Released under the MIT License.
+---
+
+## 📊 部署对比
+
+| 方案 | 本地测试 | 服务器部署 |
+|------|---------|-----------|
+| 启动时间 | 2 分钟 | 30 分钟 |
+| 配置难度 | ⭐ 简单 | ⭐⭐ 中等 |
+| 适用场景 | 测试、开发 | 生产环境 |
+| 需要域名 | ❌ 否 | ✅ 是 |
+| 需要 SSL | ❌ 否 | ✅ 是 |
+
+---
+
+## 🔒 安全说明
+
+### 法律合规
+- ✅ Chatwoot 使用 MIT 开源许可证
+- ✅ 允许商业使用和修改
+- ✅ 完全合法
+
+### 使用建议
+- ⚠️ 使用私有仓库存储代码
+- ⚠️ 不要公开分享修改后的代码
+- ⚠️ 仅内部使用
+
+---
+
+## 🐛 常见问题
+
+### Q1: 企业功能是否真的解锁？
+**A:** 是的。访问 `/super_admin` 可以验证，计划显示为 "Enterprise"。
+
+### Q2: 配置会被重置吗？
+**A:** 不会。我们已经禁用了配置重置逻辑。
+
+### Q3: 2C2G 服务器够用吗？
+**A:** 够用，但建议添加 2GB Swap。如果用户量大，建议升级到 4GB 内存。
+
+### Q4: 如何更新 Chatwoot？
+**A:** 谨慎更新。更新前备份数据，更新后需要重新应用企业功能解锁的修改。
+
+### Q5: 可以商用吗？
+**A:** 可以。MIT 许可证允许商业使用。
+
+---
+
+## 📞 技术支持
+
+### 官方资源
+- Chatwoot 官方文档: https://www.chatwoot.com/docs
+- GitHub 仓库: https://github.com/chatwoot/chatwoot
+- 社区论坛: https://github.com/chatwoot/chatwoot/discussions
+
+### 本项目
+- 查看文档目录中的详细指南
+- 所有配置和脚本都有详细注释
+
+---
+
+## 🎉 总结
+
+通过本项目，您可以：
+
+1. ✅ **免费使用企业版** - 所有功能解锁
+2. ✅ **完全品牌定制** - Logo、名称、链接
+3. ✅ **快速部署** - 本地 2 分钟，服务器 30 分钟
+4. ✅ **无限制使用** - 无用户数、账户数限制
+5. ✅ **合法合规** - MIT 许可证，完全合法
+
+**这是最彻底的 Chatwoot 开源化方案！** 🚀
+
+---
+
+## 📅 更新日志
+
+### 2025-12-28
+- ✅ 初始版本
+- ✅ 企业功能解锁
+- ✅ 快速部署方案
+- ✅ 服务器部署指南
+- ✅ 品牌定制支持
+
+---
+
+**祝您使用愉快！** 🎊

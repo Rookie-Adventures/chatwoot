@@ -1,12 +1,14 @@
 class Internal::ReconcilePlanConfigService
   def perform
-    remove_premium_config_reset_warning
-    return if ChatwootHub.pricing_plan != 'community'
-
-    create_premium_config_reset_warning if premium_config_reset_required?
-
-    reconcile_premium_config
-    reconcile_premium_features
+    # 禁用品牌配置重置逻辑，保留自定义品牌
+    return
+    
+    # 原始代码（已禁用）：
+    # remove_premium_config_reset_warning
+    # return if ChatwootHub.pricing_plan != 'community'
+    # create_premium_config_reset_warning if premium_config_reset_required?
+    # reconcile_premium_config
+    # reconcile_premium_features
   end
 
   private

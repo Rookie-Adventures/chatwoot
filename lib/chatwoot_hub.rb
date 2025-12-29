@@ -19,15 +19,21 @@ class ChatwootHub
   end
 
   def self.pricing_plan
-    return 'community' unless ChatwootApp.enterprise?
-
-    InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN')&.value || 'community'
+    # 强制返回企业版，解锁所有功能
+    'enterprise'
+    
+    # 原始代码（已禁用）：
+    # return 'community' unless ChatwootApp.enterprise?
+    # InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN')&.value || 'community'
   end
 
   def self.pricing_plan_quantity
-    return 0 unless ChatwootApp.enterprise?
-
-    InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN_QUANTITY')&.value || 0
+    # 返回无限制的许可证数量
+    999999
+    
+    # 原始代码（已禁用）：
+    # return 0 unless ChatwootApp.enterprise?
+    # InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN_QUANTITY')&.value || 0
   end
 
   def self.support_config

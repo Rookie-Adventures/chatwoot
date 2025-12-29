@@ -41,7 +41,7 @@ services:
       - NODE_ENV=development
       - RAILS_ENV=development
     entrypoint: docker/entrypoints/rails.sh
-    command: ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+    command: [ "bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0" ]
 
   sidekiq:
     <<: *base
@@ -59,7 +59,7 @@ services:
     environment:
       - NODE_ENV=development
       - RAILS_ENV=development
-    command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+    command: [ "bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml" ]
 
   vite:
     <<: *base
@@ -86,23 +86,23 @@ services:
     image: pgvector/pgvector:pg16
     restart: always
     ports:
-      - '5432:5432'
+      - '127.0.0.1:5432:5432'
     volumes:
       - postgres:/data/postgres
     environment:
       - POSTGRES_DB=chatwoot
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=
+      - POSTGRES_USER=${POSTGRES_USERNAME:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   redis:
     image: redis:alpine
     restart: always
-    command: ["sh", "-c", "redis-server --requirepass \"$REDIS_PASSWORD\""]
+    command: [ "sh", "-c", "redis-server --requirepass \"$REDIS_PASSWORD\"" ]
     env_file: .env
     volumes:
       - redis:/data/redis
     ports:
-      - '6379:6379'
+      - '127.0.0.1:6379:6379'
 
   mailhog:
     image: mailhog/mailhog
