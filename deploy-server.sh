@@ -44,7 +44,14 @@ fi
 
 # 2. 安装 Docker & Nginx
 echo -e "${GREEN}[2/8] 安装基础依赖 (Docker/Nginx/Certbot)...${NC}"
-apt update && apt install -y docker.io docker-compose-plugin nginx certbot python3-certbot-nginx
+apt update
+# 尝试安装
+if ! apt install -y docker.io docker-compose-plugin nginx certbot python3-certbot-nginx; then
+    echo -e "${YELLOW}官方源安装失败，尝试使用 Docker 官方脚本...${NC}"
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    apt install -y nginx certbot python3-certbot-nginx
+fi
 systemctl start docker
 systemctl enable docker
 
