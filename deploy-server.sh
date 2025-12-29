@@ -44,6 +44,14 @@ fi
 
 # 2. 安装 Docker & Nginx
 echo -e "${GREEN}[2/8] 检查并安装基础依赖...${NC}"
+
+# 关键修复：清理可能导致 apt 锁死的容器包冲突
+if dpkg -l | grep -q "containerd.io" && (dpkg -l | grep -q "containerd " || dpkg -l | grep -q "runc "); then
+    echo -e "${YELLOW}发现系统包与官方 Docker 存在冲突，正在执行自动外科手术...${NC}"
+    apt-get remove -y containerd runc || true
+    apt-get install -f -y
+fi
+
 apt update
 
 # 检查 Docker 是否已安装
