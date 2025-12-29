@@ -57,13 +57,16 @@ else
     fi
 fi
 
-# 确保安装 Nginx 和 Certbot (排除 docker 相关的包以防冲突)
-apt install -y nginx certbot python3-certbot-nginx
+# 确保安装 Nginx 和 Certbot (拆分指令，一个一个装，防止引发系统级的依赖冲突)
+echo -e "${GREEN}正在安装 Nginx...${NC}"
+apt install -y nginx || { echo -e "${RED}Nginx 安装失败，尝试强制修复依赖...${NC}"; apt --fix-broken install -y; apt install -y nginx; }
+
+echo -e "${GREEN}正在安装 Certbot...${NC}"
+apt install -y certbot python3-certbot-nginx || echo -e "${YELLOW}Certbot 安装警告，可能需要稍后手动补齐${NC}"
 
 systemctl start docker || true
 systemctl enable docker || true
-systemctl start nginx
-systemctl enable nginx
+systemctl restart nginx || systemctl start nginx
 
 # 3. 准备代码目录
 echo -e "${GREEN}[3/8] 准备代码环境...${NC}"
