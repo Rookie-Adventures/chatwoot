@@ -45,24 +45,37 @@ fi
 # 2. 安装 Docker & Nginx
 echo -e "${GREEN}[2/8] 检查并安装基础依赖...${NC}"
 
-# 关键修复：清理可能导致 apt 锁死的容器包冲突
-if dpkg -l | grep -q "containerd.io" && (dpkg -l | grep -q "containerd " || dpkg -l | grep -q "runc "); then
-    echo -e "${YELLOW}发现系统包与官方 Docker 存在冲突，正在执行自动外科手术...${NC}"
-    apt-get remove -y containerd runc || true
-    apt-get install -f -y
-fi
+# 关键修复：无论如何，先清理所有可能导致 apt 冲突的 containerd/docker 相关包
+echo -e "${YELLOW}正在检测并清理系统包冲突...${NC}"
+
+# 移除 Ubuntu 自带的旧版 containerd 和 runc (与 Docker 官方 containerd.io 冲突)
+apt-get remove -y containerd runc 2>/dev/null || true
+
+# 如果之前装过 docker.io (Ubuntu 官方包，可能版本老旧或有冲突)
+# 我们选择使用 Docker 官方一键脚本来保证兼容性
+apt-get remove -y docker docker-engine docker.io 2>/dev/null || true
+
+# 修复可能残留的依赖问题
+apt-get autoremove -y 2>/dev/null || true
+apt-get install -f -y
 
 apt update
 
-# 检查 Docker 是否已安装
-if command -v docker &> /dev/null; then
-    echo -e "${YELLOW}检测到 Docker 已安装 ($ (docker --version))，跳过 Docker 安装${NC}"
+# 检查 Docker 是否已安装且能正常工作
+if command -v docker &> /dev/null && docker info &> /dev/null; then
+    echo -e "${YELLOW}检测到 Docker 已安装且正常工作 ($(docker --version))，跳过 Docker 安装${NC}"
 else
-    echo -e "${YELLOW}正在安装 Docker...${NC}"
-    if ! apt install -y docker.io docker-compose-plugin; then
-        curl -fsSL https://get.docker.com -o get-docker.sh
-        sh get-docker.sh
-    fi
+    echo -e "${YELLOW}正在安装 Docker (使用官方脚本)...${NC}"
+    # 优先使用 Docker 官方一键安装脚本，它会自动处理所有依赖
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    rm -f get-docker.sh
+fi
+
+# 确保 docker-compose-plugin 已安装
+if ! docker compose version &> /dev/null; then
+    echo -e "${YELLOW}正在安装 docker-compose-plugin...${NC}"
+    apt install -y docker-compose-plugin || true
 fi
 
 # 确保安装 Nginx 和 Certbot (拆分指令，一个一个装，防止引发系统级的依赖冲突)
