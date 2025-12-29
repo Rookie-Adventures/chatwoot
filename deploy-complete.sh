@@ -100,13 +100,13 @@ fi
 cd /opt/chatwoot
 
 # ==========================================
-# 步骤 8: 配置 Nginx
+# 步骤 8: 配置 Nginx（HTTP 临时配置）
 # ==========================================
 echo -e "${GREEN}[8/12] 配置 Nginx...${NC}"
 
-# 复制 Nginx 配置文件
-if [ -f "nginx-chatwoot.conf" ]; then
-    cp nginx-chatwoot.conf /etc/nginx/sites-available/chatwoot
+# 使用 HTTP 临时配置（不包含 SSL）
+if [ -f "nginx-chatwoot-http.conf" ]; then
+    cp nginx-chatwoot-http.conf /etc/nginx/sites-available/chatwoot
     
     # 创建软链接
     ln -sf /etc/nginx/sites-available/chatwoot /etc/nginx/sites-enabled/
@@ -120,9 +120,9 @@ if [ -f "nginx-chatwoot.conf" ]; then
     # 重载 Nginx
     systemctl reload nginx
     
-    echo -e "${GREEN}Nginx 配置完成${NC}"
+    echo -e "${GREEN}Nginx HTTP 配置完成${NC}"
 else
-    echo -e "${RED}错误: nginx-chatwoot.conf 文件不存在${NC}"
+    echo -e "${RED}错误: nginx-chatwoot-http.conf 文件不存在${NC}"
     exit 1
 fi
 
